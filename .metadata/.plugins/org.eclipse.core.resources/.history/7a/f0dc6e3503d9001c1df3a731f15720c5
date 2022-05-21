@@ -1,0 +1,67 @@
+package com.team02.u25.ejercicio1.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.team02.u25.ejercicio1.dto.Empleado;
+import com.team02.u25.ejercicio1.service.EmpleadoServiceImpl;
+
+public class EmpleadoController {
+	
+	@Autowired
+	EmpleadoServiceImpl empleadoServiceImpl;
+
+	@GetMapping("/")
+	public List<Empleado> listarEmpleado(){
+		return empleadoServiceImpl.listarEmpleado();
+	}
+	
+	@PostMapping("/")
+	public Empleado salvarDepartamento(@RequestBody Empleado empleado) {
+		return empleadoServiceImpl.guardarEmpleado(empleado);
+	}
+	
+	@GetMapping("/{id}")
+	public Departamento departamentoXID(@PathVariable(name="id") Long id) {
+		
+		Departamento departamento_xid = new Departamento();
+		
+		departamento_xid = empleadoServiceImpl.departamentoXID(id);
+		
+		return departamento_xid;
+		
+	}
+	
+	@PutMapping("/{id}")
+	public Departamento actualizarDepartamento(@PathVariable(name="id")Long id,@RequestBody Departamento departamento) {
+		
+		Departamento departamento_seleccionado= new Departamento();
+		Departamento departamento_actualizado= new Departamento();
+		
+		departamento_seleccionado= empleadoServiceImpl.departamentoXID(id);
+		
+		departamento_seleccionado.setId(departamento.getId());
+		departamento_seleccionado.setNombre(departamento.getNombre());
+		departamento_seleccionado.setPresupuesto(departamento.getPresupuesto());
+
+		
+		departamento_actualizado = empleadoServiceImpl.actualizarDepartamento(departamento_seleccionado);
+		
+		System.out.println("El cliente actualizado es: "+ departamento_actualizado);
+		
+		return departamento_actualizado;
+	}
+	
+	@DeleteMapping("/{id}")
+	public void eleiminarDepartamento(@PathVariable(name="id")Long id) {
+		empleadoServiceImpl.eliminarDepartamento(id);
+	}
+	
+}

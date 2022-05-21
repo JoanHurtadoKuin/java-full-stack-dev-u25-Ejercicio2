@@ -1,0 +1,67 @@
+package com.team02.u25.ejercicio1.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.team02.u25.ejercicio1.dto.Empleado;
+import com.team02.u25.ejercicio1.service.EmpleadoServiceImpl;
+
+public class EmpleadoController {
+	
+	@Autowired
+	EmpleadoServiceImpl empleadoServiceImpl;
+
+	@GetMapping("/")
+	public List<Empleado> listarEmpleado(){
+		return empleadoServiceImpl.listarEmpleado();
+	}
+	
+	@PostMapping("/")
+	public Empleado salvarEmpleado(@RequestBody Empleado empleado) {
+		return empleadoServiceImpl.guardarEmpleado(empleado);
+	}
+	
+	@GetMapping("/{id}")
+	public Empleado EmpleadoXID(@PathVariable(name="id") Long id) {
+		
+		Empleado Empleado_xid = new Empleado();
+		
+		Empleado_xid = empleadoServiceImpl.empleadoXID(id);
+		
+		return Empleado_xid;
+		
+	}
+	
+	@PutMapping("/{id}")
+	public Empleado actualizarEmpleado(@PathVariable(name="id")Long id,@RequestBody Empleado Empleado) {
+		
+		Empleado Empleado_seleccionado= new Empleado();
+		Empleado Empleado_actualizado= new Empleado();
+		
+		Empleado_seleccionado= empleadoServiceImpl.EmpleadoXID(id);
+		
+		Empleado_seleccionado.setId(Empleado.getId());
+		Empleado_seleccionado.setNombre(Empleado.getNombre());
+		Empleado_seleccionado.setPresupuesto(Empleado.getPresupuesto());
+
+		
+		Empleado_actualizado = empleadoServiceImpl.actualizarEmpleado(Empleado_seleccionado);
+		
+		System.out.println("El cliente actualizado es: "+ Empleado_actualizado);
+		
+		return Empleado_actualizado;
+	}
+	
+	@DeleteMapping("/{id}")
+	public void eleiminarEmpleado(@PathVariable(name="id")Long id) {
+		empleadoServiceImpl.eliminarEmpleado(id);
+	}
+	
+}

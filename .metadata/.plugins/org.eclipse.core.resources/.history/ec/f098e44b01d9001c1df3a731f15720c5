@@ -1,0 +1,12 @@
+package com.team02.u25.ejercicio1.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.team02.u25.ejercicio1.dao.IDepartamentoDAO;
+
+public class EmpleadoServiceImpl {
+
+	@Autowired
+	IEmpleadoDAO iEmpleadoDAO;
+	
+}

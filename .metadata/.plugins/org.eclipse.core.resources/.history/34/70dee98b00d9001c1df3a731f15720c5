@@ -1,0 +1,19 @@
+package com.team02.u25.ejercicio1.service;
+
+import antlr.collections.List;
+import com.team02.u25.ejercicio1.dto.Departamento;
+
+public interface IDepartamentoService {
+	
+	//Metodos del CRUD
+		public List<Departamento> listarDepartamento(); //Listar All 
+		
+		public Departamento guardarDepartamento(Departamento departamento);	//Guarda un cliente CREATE
+		
+		public Departamento departamentoXID(Long id); //Leer datos de un cliente READ
+		
+		public Departamento actualizarDepartamento(Departamento cliente); //Actualiza datos del cliente UPDATE
+		
+		public void eliminarCliente(Long id);// Elimina el cliente DELETE
+
+}

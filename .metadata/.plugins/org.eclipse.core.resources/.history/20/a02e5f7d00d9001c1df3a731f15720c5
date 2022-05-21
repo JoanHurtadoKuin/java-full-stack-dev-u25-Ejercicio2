@@ -1,0 +1,16 @@
+package com.team02.u25.ejercicio1.service;
+
+public interface IDepartamentoService {
+	
+	//Metodos del CRUD
+		public List<Cliente> listarClientes(); //Listar All 
+		
+		public Cliente guardarCliente(Cliente cliente);	//Guarda un cliente CREATE
+		
+		public Cliente clienteXID(Long id); //Leer datos de un cliente READ
+		
+		public Cliente actualizarCliente(Cliente cliente); //Actualiza datos del cliente UPDATE
+		
+		public void eliminarCliente(Long id);// Elimina el cliente DELETE
+
+}

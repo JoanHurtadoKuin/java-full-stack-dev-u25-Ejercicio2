@@ -1,0 +1,27 @@
+package com.team02.u25.ejercicio1.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+public class Empleado {
+
+	//Atributos de entidad cliente
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+	private Long id;
+	@Column(name = "title")//no hace falta si se llama igual
+	private String title;
+	@Column(name = "director")//no hace falta si se llama igual
+	private String director;
+	
+	@ManyToOne
+    @JoinColumn(name="cli_id")
+    private Cliente cliente;
+	
+}
