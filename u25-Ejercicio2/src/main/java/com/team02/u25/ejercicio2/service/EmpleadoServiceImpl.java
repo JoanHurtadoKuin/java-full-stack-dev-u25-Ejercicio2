@@ -1,12 +1,14 @@
-package com.team02.u25.ejercicio1.service;
+package com.team02.u25.ejercicio2.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.team02.u25.ejercicio1.dao.IEmpleadoDAO;
-import com.team02.u25.ejercicio1.dto.Empleado;
+import com.team02.u25.ejercicio2.dao.IEmpleadoDAO;
+import com.team02.u25.ejercicio2.dto.Empleado;
 
+@Service
 public class EmpleadoServiceImpl implements IEmpleadoService{
 
 	@Autowired
@@ -14,30 +16,30 @@ public class EmpleadoServiceImpl implements IEmpleadoService{
 
 	@Override
 	public List<Empleado> listarEmpleado() {
-		// TODO Auto-generated method stub
+
 		return iEmpleadoDAO.findAll();
 	}
 
 	@Override
 	public Empleado guardarEmpleado(Empleado empleado) {
-		// TODO Auto-generated method stub
+
 		return iEmpleadoDAO.save(empleado);
 	}
 
 	@Override
-	public Empleado empleadoXID(Long id) {
-		// TODO Auto-generated method stub
-		return iEmpleadoDAO.findById(id).get();
+	public Empleado empleadoXID(String codigo) {
+
+		return iEmpleadoDAO.findById(codigo).get();
 	}
 
 	@Override
 	public Empleado actualizarEmpleado(Empleado empleado) {
-		// TODO Auto-generated method stub
+
 		return iEmpleadoDAO.save(empleado);
 	}
 
 	@Override
-	public void eliminarEmpleado(Long id) {
+	public void eliminarEmpleado(String id) {
 		iEmpleadoDAO.deleteById(id);
 	}
 	

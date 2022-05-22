@@ -1,7 +1,8 @@
-package com.team02.u25.ejercicio1.service;
+package com.team02.u25.ejercicio2.service;
 
 import java.util.List;
-import com.team02.u25.ejercicio1.dto.Departamento;
+
+import com.team02.u25.ejercicio2.dto.Departamento;
 
 public interface IDepartamentoService {
 	
@@ -10,10 +11,10 @@ public interface IDepartamentoService {
 		
 		public Departamento guardarDepartamento(Departamento departamento);	
 		
-		public Departamento departamentoXID(Long id); 
+		public Departamento departamentoXID(int codigo); 
 		
 		public Departamento actualizarDepartamento(Departamento departamento); 
 		
-		public void eliminarDepartamento(Long id);
+		public void eliminarDepartamento(int codigo);
 
 }

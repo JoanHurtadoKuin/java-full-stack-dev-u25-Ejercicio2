@@ -1,19 +1,19 @@
-package com.team02.u25.ejercicio1.dto;
+package com.team02.u25.ejercicio2.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+@Entity
+@Table(name= "empleado")
 public class Empleado {
 
 	//Atributos de entidad cliente
 	@Id
-	private Long dni;
+	private String dni;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
 	@Column(name = "apellidos")//no hace falta si se llama igual
@@ -27,18 +27,18 @@ public class Empleado {
 		
 	}
 
-	public Empleado(Long dni, String nombre, String apellidos, Departamento departamento) {
+	public Empleado(String dni, String nombre, String apellidos, Departamento departamento) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.departamento = departamento;
 	}
 
-	public Long getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(Long dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 

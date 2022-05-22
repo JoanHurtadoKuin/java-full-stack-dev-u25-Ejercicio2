@@ -1,12 +1,14 @@
-package com.team02.u25.ejercicio1.service;
+package com.team02.u25.ejercicio2.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.team02.u25.ejercicio1.dao.IDepartamentoDAO;
-import com.team02.u25.ejercicio1.dto.Departamento;
+import com.team02.u25.ejercicio2.dao.IDepartamentoDAO;
+import com.team02.u25.ejercicio2.dto.Departamento;
 
+@Service
 public class DepartamentoServiceImpl implements IDepartamentoService{
 	
 	@Autowired
@@ -14,31 +16,31 @@ public class DepartamentoServiceImpl implements IDepartamentoService{
 
 	@Override
 	public List<Departamento> listarDepartamentos() {
-		// TODO Auto-generated method stub
+
 		return iDepartamentoDAO.findAll();
 	}
 
 	@Override
 	public Departamento guardarDepartamento(Departamento departamento) {
-		// TODO Auto-generated method stub
+
 		return iDepartamentoDAO.save(departamento);
 	}
 
 	@Override
-	public Departamento departamentoXID(Long id) {
-		// TODO Auto-generated method stub
-		return iDepartamentoDAO.findById(id).get();
+	public Departamento departamentoXID(int codigo) {
+	
+		return iDepartamentoDAO.findById(codigo).get();
 	}
 
 	@Override
 	public Departamento actualizarDepartamento(Departamento departamento) {
-		// TODO Auto-generated method stub
+		
 		return iDepartamentoDAO.save(departamento);
 	}
 
 	@Override
-	public void eliminarDepartamento(Long id) {
-		iDepartamentoDAO.deleteById(id);		
+	public void eliminarDepartamento(int codigo) {
+		iDepartamentoDAO.deleteById(codigo);		
 	}
 
 }
