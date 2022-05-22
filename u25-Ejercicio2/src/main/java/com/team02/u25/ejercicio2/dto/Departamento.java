@@ -1,20 +1,18 @@
-package com.team02.u25.ejercicio1.dto;
+package com.team02.u25.ejercicio2.dto;
 
-import java.sql.Date;
+
 import java.util.List;
 
-import javax.persistence.*;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,8 +23,7 @@ public class Departamento {
 
 	//Atributos de entidad cliente
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private Long id;
+	private int codigo;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
 	@Column(name = "presupuesto")//no hace falta si se llama igual
@@ -40,18 +37,18 @@ public class Departamento {
     	
     }
 
-	public Departamento(Long id, String nombre, int presupuesto) {
-		this.id = id;
+	public Departamento(int codigo, String nombre, int presupuesto) {
+		this.codigo = codigo;
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 	}
 
-	public Long getId() {
-		return id;
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
@@ -82,7 +79,7 @@ public class Departamento {
 
 	@Override
 	public String toString() {
-		return "Departamento [id=" + id + ", nombre=" + nombre + ", presupuesto=" + presupuesto + "]";
+		return "Departamento [codigo=" + codigo + ", nombre=" + nombre + ", presupuesto=" + presupuesto + "]";
 	}
     
 }

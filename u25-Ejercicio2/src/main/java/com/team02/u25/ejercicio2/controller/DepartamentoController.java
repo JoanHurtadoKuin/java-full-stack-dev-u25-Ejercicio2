@@ -1,4 +1,4 @@
-package com.team02.u25.ejercicio1.controller;
+package com.team02.u25.ejercicio2.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.team02.u25.ejercicio1.dto.Departamento;
-import com.team02.u25.ejercicio1.service.DepartamentoServiceImpl;
+import com.team02.u25.ejercicio2.dto.Departamento;
+import com.team02.u25.ejercicio2.service.DepartamentoServiceImpl;
 
 @RestController
 @RequestMapping("/departamento")
@@ -32,40 +32,37 @@ public class DepartamentoController {
 		return departamentoServiceImpl.guardarDepartamento(departamento);
 	}
 	
-	@GetMapping("/{id}")
-	public Departamento departamentoXID(@PathVariable(name="id") Long id) {
+	@GetMapping("/{codigo}")
+	public Departamento departamentoXID(@PathVariable(name="codigo") int codigo) {
 		
 		Departamento departamento_xid = new Departamento();
 		
-		departamento_xid = departamentoServiceImpl.departamentoXID(id);
+		departamento_xid = departamentoServiceImpl.departamentoXID(codigo);
 		
 		return departamento_xid;
 		
 	}
 	
-	@PutMapping("/{id}")
-	public Departamento actualizarDepartamento(@PathVariable(name="id")Long id,@RequestBody Departamento departamento) {
+	@PutMapping("/{codigo}")
+	public Departamento actualizarDepartamento(@PathVariable(name="codigo")int codigo,@RequestBody Departamento departamento) {
 		
 		Departamento departamento_seleccionado= new Departamento();
 		Departamento departamento_actualizado= new Departamento();
 		
-		departamento_seleccionado= departamentoServiceImpl.departamentoXID(id);
+		departamento_seleccionado= departamentoServiceImpl.departamentoXID(codigo);
 		
-		departamento_seleccionado.setId(departamento.getId());
 		departamento_seleccionado.setNombre(departamento.getNombre());
 		departamento_seleccionado.setPresupuesto(departamento.getPresupuesto());
 
 		
 		departamento_actualizado = departamentoServiceImpl.actualizarDepartamento(departamento_seleccionado);
 		
-		System.out.println("El cliente actualizado es: "+ departamento_actualizado);
-		
 		return departamento_actualizado;
 	}
 	
-	@DeleteMapping("/{id}")
-	public void eleiminarDepartamento(@PathVariable(name="id")Long id) {
-		departamentoServiceImpl.eliminarDepartamento(id);
+	@DeleteMapping("/{codigo}")
+	public void eleiminarDepartamento(@PathVariable(name="codigo")int codigo) {
+		departamentoServiceImpl.eliminarDepartamento(codigo);
 	}
 	
 }

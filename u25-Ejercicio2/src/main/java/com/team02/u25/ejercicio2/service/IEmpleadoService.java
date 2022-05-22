@@ -1,8 +1,8 @@
-package com.team02.u25.ejercicio1.service;
+package com.team02.u25.ejercicio2.service;
 
 import java.util.List;
 
-import com.team02.u25.ejercicio1.dto.Empleado;
+import com.team02.u25.ejercicio2.dto.Empleado;
 
 
 public interface IEmpleadoService {
@@ -12,9 +12,9 @@ public interface IEmpleadoService {
 	
 	public Empleado guardarEmpleado(Empleado empleado);	
 	
-	public Empleado empleadoXID(Long id); 
+	public Empleado empleadoXID(String dni); 
 	
 	public Empleado actualizarEmpleado(Empleado empleado); 
 	
-	public void eliminarEmpleado(Long id);
+	public void eliminarEmpleado(String dni);
 }
