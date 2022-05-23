@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+//crear tabla departamento
 @Table(name= "departamento")
 public class Departamento {
 	
@@ -31,6 +32,8 @@ public class Departamento {
 	
     @OneToMany
     @JoinColumn(name="id")
+    
+    //lista de empleados
     private List<Empleado> empleado;
     
     public Departamento() { 
@@ -69,6 +72,7 @@ public class Departamento {
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado")
+	
 	public List<Empleado> getEmpleado() {
 		return empleado;
 	}

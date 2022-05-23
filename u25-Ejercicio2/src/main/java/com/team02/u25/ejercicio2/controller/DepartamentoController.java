@@ -21,17 +21,17 @@ public class DepartamentoController {
 	
 	@Autowired
 	DepartamentoServiceImpl departamentoServiceImpl;
-
+	//listar departamentos
 	@GetMapping("/")
 	public List<Departamento> listarDepartamentos(){
 		return departamentoServiceImpl.listarDepartamentos();
 	}
-	
+
 	@PostMapping("/")
 	public Departamento salvarDepartamento(@RequestBody Departamento departamento) {
 		return departamentoServiceImpl.guardarDepartamento(departamento);
 	}
-	
+	//añadir departamento
 	@GetMapping("/{codigo}")
 	public Departamento departamentoXID(@PathVariable(name="codigo") int codigo) {
 		
@@ -42,7 +42,7 @@ public class DepartamentoController {
 		return departamento_xid;
 		
 	}
-	
+	//actualizar el empleado
 	@PutMapping("/{codigo}")
 	public Departamento actualizarDepartamento(@PathVariable(name="codigo")int codigo,@RequestBody Departamento departamento) {
 		
@@ -59,7 +59,7 @@ public class DepartamentoController {
 		
 		return departamento_actualizado;
 	}
-	
+	//eliminar departamento
 	@DeleteMapping("/{codigo}")
 	public void eleiminarDepartamento(@PathVariable(name="codigo")int codigo) {
 		departamentoServiceImpl.eliminarDepartamento(codigo);

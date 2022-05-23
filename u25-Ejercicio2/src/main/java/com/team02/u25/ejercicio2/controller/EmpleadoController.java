@@ -21,17 +21,17 @@ public class EmpleadoController {
 	
 	@Autowired
 	EmpleadoServiceImpl empleadoServiceImpl;
-
+	//liste de empleados
 	@GetMapping("/")
 	public List<Empleado> listarEmpleado(){
 		return empleadoServiceImpl.listarEmpleado();
 	}
-	
+	//salvar empleado
 	@PostMapping("/")
 	public Empleado salvarEmpleado(@RequestBody Empleado empleado) {
 		return empleadoServiceImpl.guardarEmpleado(empleado);
 	}
-	
+	//añadir empleado
 	@GetMapping("/{dni}")
 	public Empleado EmpleadoXID(@PathVariable(name="id") String dni) {
 		
@@ -42,7 +42,7 @@ public class EmpleadoController {
 		return Empleado_xid;
 		
 	}
-	
+	//actualizar los empleados
 	@PutMapping("/{dni}")
 	public Empleado actualizarEmpleado(@PathVariable(name="dni")String dni,@RequestBody Empleado Empleado) {
 		
@@ -63,7 +63,7 @@ public class EmpleadoController {
 		
 		return Empleado_actualizado;
 	}
-	
+	//eliminar empleado
 	@DeleteMapping("/{dni}")
 	public void eleiminarEmpleado(@PathVariable(name="dni")String dni) {
 		empleadoServiceImpl.eliminarEmpleado(dni);
